@@ -39,3 +39,54 @@ I want to grab my account and thin it down to just the basics of what I'm lookin
     - onClick creates to post feed based on chosen subreddit
 
 
+## Setting up the environment
+We're gonna set this up with React, React-Router, and Redux.  For testing, we will use Jest and Enzyme.
+
+To create the initial structure for the environment:
+
+````
+npx create-react-app personalreddit
+````
+
+After entering new directory - personalreddit (Gotta remember that on the git push, need to move back up to personalReddit one level up.):
+
+````
+npm install react-router-dom
+````
+Then add redux:
+
+````
+npm install redux react-redux
+````
+
+Now to set up Jest.  FIrst we'll install it:
+
+````
+npm install --save-dev jest
+````
+To use it together with Babel, we'll install:
+
+````
+npm install --save-dev babel-jest
+````
+
+Create a file named <mark style ="background-color: lightgrey">.babelrc</mark> and paste this code:
+````
+{
+    "presets": ["@babel/preset-env"]
+}
+````
+Then add this to <mark style ="background-color: lightgrey">scripts</mark> in <mark style ="background-color: lightgrey">package.json</mark>:
+
+````
+{
+    ...
+    "scripts": {
+        ...
+        "test": "jest",
+        "test:watch": "npm test -- --watch"
+    },
+    ...
+}
+````
+Should be ready to go!
