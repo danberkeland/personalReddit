@@ -29,7 +29,8 @@ I want to grab my account and thin it down to just the basics of what I'm lookin
 - Comment Count
     - Displays number of comments on post pulled from Reddit. 
     - onClick - expands and displays comments.
-    - (NEED A WIREFRAME)
+    - ![Comment Expansion Wireframe](./WireFrame/RedditCommentExp.png "Comment Expansion Wireframe")
+    - On expansion grabs comment time from Reddit and then calculates, based on current time, how old the post is.
 - Title of Reddit Post
     - onClick expands post to include full body.
     - ![Full Post Wireframe](./WireFrame/RedditFullPost.png "Full Post Wireframe")
