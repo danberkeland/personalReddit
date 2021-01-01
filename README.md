@@ -32,7 +32,8 @@ I want to grab my account and thin it down to just the basics of what I'm lookin
     - (NEED A WIREFRAME)
 - Title of Reddit Post
     - onClick expands post to include full body.
-    - (NEED A WIREFRAME)
+    - ![Full Post Wireframe](./WireFrame/RedditFullPost.png "Full Post Wireframe")
+    - Back to List Button returns to previous listed view
 - Subreddit and Icon
     - onClick creates to post feed based on chosen subreddit
 
