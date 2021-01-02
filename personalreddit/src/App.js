@@ -1,11 +1,16 @@
 
 import './App.css';
 
+const logoStyle = {
+  color: "rgb(243, 79, 3)",
+  fontSize: "1em"
+}
+
 function App() {
   return (
     <div className="App">
       <header>
-        <div className="logo"><img alt="Reddit icon" src="Reddit-Icon.png" /></div>
+        <div className="logo"><img alt="Reddit icon" src="Reddit-Icon.png" /><span><span style={logoStyle}>Dan's</span>Reddit</span></div>
         <div className="search">
           <input type="text" placeholder="search..." />
         </div>
@@ -13,7 +18,11 @@ function App() {
       <div className="mainmain">
       <main>
         <article>
-          <div className="karmaAdjust">Here's where karma adjust goes</div>
+          <div className="karmaAdjust">
+          <img className="upVote" alt="Up Vote" src="upArrow.png" />
+          <div className="karmaCount">234</div>
+          <img className="downVote" alt="Down Vote" src="downArrow.png" />
+          </div>
           <div className="postInfo">
             <h2>Post Title</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
@@ -41,7 +50,11 @@ function App() {
           </div>         
         </article>
         <article>
-          <div className="karmaAdjust">Here's where karma adjust goes</div>
+        <div className="karmaAdjust">
+          <img className="upVote" alt="Up Vote" src="upArrow.png" />
+          <div className="karmaCount">234</div>
+          <img className="downVote" alt="Down Vote" src="downArrow.png" />
+        </div>
           <div className="postInfo">
             <h2>Post Title</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
@@ -54,7 +67,11 @@ function App() {
           </div>         
         </article>
         <article>
-          <div className="karmaAdjust">Here's where karma adjust goes</div>
+        <div className="karmaAdjust">
+          <img className="upVote" alt="Up Vote" src="upArrow.png" />
+          <div className="karmaCount">234</div>
+          <img className="downVote" alt="Down Vote" src="downArrow.png" />
+        </div>
           <div className="postInfo">
             <h2>Post Title</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
