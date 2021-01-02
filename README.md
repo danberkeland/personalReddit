@@ -90,3 +90,12 @@ Then add this to <mark style ="background-color: lightgrey">scripts</mark> in <m
 }
 ````
 Need to add Enzyme.  I'll update this when the time comes.
+
+Upon attempting to start the script, I ran into a problem with the Jest dependency.  Here's the fix:
+
+```
+1. Delete package-lock.json (not package.json!) and/or yarn.lock in your project folder.
+  2. Delete node_modules in your project folder.
+  3. Remove "jest" from dependencies and/or devDependencies in the package.json file in your project folder.
+  4. Run npm install or yarn, depending on the package manager you use.
+```
