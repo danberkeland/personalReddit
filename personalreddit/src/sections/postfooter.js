@@ -10,7 +10,7 @@ export const Footer = (props) => {
         <div className = "postFooter">
               <h3>{props.author}</h3>
               <div className = "timePosted">{props.timePosted}</div>
-              <div className = "commentCount">123</div>             
+              <div className = "commentCount">{props.commentCount}</div>             
         </div>
     )
 }

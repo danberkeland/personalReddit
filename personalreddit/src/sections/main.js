@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ReactHtmlParser from 'react-html-parser';
 
 
 import { Karma } from './karma';
@@ -22,11 +23,18 @@ export const Main = (props) => {
       url
     )
     const list = await data.json();
-    setItems(list.data.children);
-
-
-    
+    setItems(list.data.children);  
   };
+
+
+  const translate = (text) => {
+
+    let fin = text.replace('&lt;!-- SC_OFF --&gt;','').replace('&lt;!-- SC_ON --&gt;','').replace('class="md"','');
+    let finfin = ReactHtmlParser(fin)
+    return finfin[0]
+  }
+
+
 
   return (
       
@@ -40,9 +48,9 @@ export const Main = (props) => {
           <Karma karma={item.data.score}/>
             <div className="postInfo">
               <h2>{item.data.title}</h2>
-              <p>{item.data.selftext}</p>
+              {item.data.selftext_html ? <React.Fragment>{ReactHtmlParser (translate(item.data.selftext_html))}</React.Fragment> : <p>{item.data.selftext}</p>}
               
-              <Footer author={item.data.author} timePosted={item.data.created_utc}/>
+              <Footer author={item.data.author} commentCount={item.data.num_comments} timePosted={item.data.created_utc}/>
               {/* <Comment /> */}
             </div>         
           </article>
