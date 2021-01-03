@@ -36,12 +36,12 @@ export const Main = () => {
       <React.Fragment>
         
           <article>
-          <Karma />
+          <Karma karma={item.data.score}/>
             <div className="postInfo">
               <h2>{item.data.title}</h2>
               <p>{item.data.selftext}</p>
               
-              <Footer author={item.data.author}/>
+              <Footer author={item.data.author} timePosted={item.data.created_utc}/>
               {/* <Comment /> */}
             </div>         
           </article>
