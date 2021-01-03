@@ -3,24 +3,27 @@ import React, { useEffect, useState } from 'react'
 
 import { Karma } from './karma';
 import { Footer } from './postfooter';
-import { Comment } from './comment'
+/* import { Comment } from './comment' */
 
 
-export const Main = () => {
+export const Main = (props) => {
 
+  
   useEffect(() => {
     fetchItems();
-  }, []);
+  });
 
+
+
+  const url = `https://www.reddit.com/r${props.chosen}/new.json`
 
   const [items,setItems] = useState([]);
 
   const fetchItems = async () => {
     const data = await fetch(
-      'https://www.reddit.com/r/history/new.json'
+      url
     )
     const list = await data.json();
-    console.log(list.data.children);
     setItems(list.data.children);
 
 

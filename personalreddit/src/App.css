@@ -208,6 +208,7 @@ main {
 
 nav {
   position: fixed;
+  top: 100px;
   right: 10px;
   display: flex;
   justify-content: flex-start;
