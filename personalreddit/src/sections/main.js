@@ -9,9 +9,7 @@ import { Footer } from './postfooter';
 export const Main = (props) => {
 
   
-  useEffect(() => {
-    fetchItems();
-  });
+  useEffect(() => fetchItems(), [props.chosen]);
 
 
 
