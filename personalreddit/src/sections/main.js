@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 
 import { Karma } from './karma';
 import { Footer } from './postfooter';
@@ -7,20 +8,50 @@ import { Comment } from './comment'
 
 export const Main = () => {
 
-    return (
-        <main>
-        <article>
-          <Karma />
-          <div className="postInfo">
-            <h2>Post Title</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <Footer />
-            <Comment />
-          </div>         
-        </article>
-        
-        <button>BACK TO LIST</button>
-      </main>
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+
+  const [items,setItems] = useState([]);
+
+  const fetchItems = async () => {
+    const data = await fetch(
+      'https://www.reddit.com/r/history/new.json'
     )
+    const list = await data.json();
+    console.log(list.data.children);
+    setItems(list.data.children);
+
+
+    
+  };
+
+  return (
+      
+    
+
+    <main>
+    {items.map(item => (
+      <React.Fragment>
+        
+          <article>
+          <Karma />
+            <div className="postInfo">
+              <h2>{item.data.title}</h2>
+              <p>{item.data.selftext}</p>
+              
+              <Footer author={item.data.author}/>
+              {/* <Comment /> */}
+            </div>         
+          </article>
+      
+         
+        
+      </React.Fragment>
+          ))}
+      {/* <button>BACK TO LIST</button>  */}  
+    </main>
+       
+  )
 }
