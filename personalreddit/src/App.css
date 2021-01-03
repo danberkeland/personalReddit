@@ -158,7 +158,11 @@ main {
           margin: 10px 10px;
         }
 
-            
+        .postInfo img{
+          padding: 0 15px;
+          width: 300px;
+          border-radius: 0;
+        }  
 
             .postFooter {
               display:flex;
