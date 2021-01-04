@@ -4,7 +4,7 @@ import { Header } from './sections/header'
 import { Main } from './sections/main'
 import { Nav } from './sections/nav'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import React,{ useState } from 'react';
+import React,{ useEffect, useState } from 'react';
  
 
 
@@ -15,20 +15,20 @@ function App() {
         const navList = [{
           key: 1,
           reddit: "/history",
-          redditName:"r/history",
+          redditName:"History",
           image: "history.png",
       },
       {
           key: 2,
-          reddit: "/Breadit",
-          redditName:"r/Breadit",
-          image: "breadit.jpg",
+          reddit: "/AmericanHistory",
+          redditName:"American History",
+          image: "americanhistory.png",
       },
       {
           key: 3,
-          reddit: "/ReactJS",
-          redditName:"r/ReactJS",
-          image: "reactjs.png",
+          reddit: "/AskHistorians",
+          redditName:"Ask Historians",
+          image: "askhistorians.png",
       },
       {
           key: 4,
@@ -38,6 +38,8 @@ function App() {
       }
 
       ]
+
+      
 
       const [navItems] = useState(navList);
       const [currentReddit,setCurrentReddit ] = useState();

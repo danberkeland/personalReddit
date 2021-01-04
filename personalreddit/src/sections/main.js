@@ -11,6 +11,8 @@ export const Main = (props) => {
 
   
   useEffect(() => fetchItems(), [props.chosen]);
+  useEffect(() => window.scrollTo(0,0))
+  
 
 
 
@@ -26,7 +28,7 @@ export const Main = (props) => {
     setItems(list.data.children);  
   };
 
-
+  
   const translate = (text) => {
 
     let fin = text.replace('&lt;!-- SC_OFF --&gt;','').replace('&lt;!-- SC_ON --&gt;','').replace('class="md"','');
