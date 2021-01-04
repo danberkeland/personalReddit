@@ -1,31 +1,51 @@
 import React, { useEffect, useState } from 'react'
+import ReactHtmlParser from 'react-html-parser';
 
 
 import { Karma } from './karma';
 import { Footer } from './postfooter';
-import { Comment } from './comment'
+/* import { Comment } from './comment' */
 
 
-export const Main = () => {
+export const Main = (props) => {
 
-  useEffect(() => {
-    fetchItems();
-  }, []);
+  
+  useEffect(() => fetchItems(), [props.chosen]);
+  useEffect(() => window.scrollTo(0,0))
+  
 
+
+
+  const url = `https://www.reddit.com/r${props.chosen}/new.json`
 
   const [items,setItems] = useState([]);
 
   const fetchItems = async () => {
     const data = await fetch(
-      'https://www.reddit.com/r/history/new.json'
+      url
     )
     const list = await data.json();
-    console.log(list.data.children);
-    setItems(list.data.children);
-
-
-    
+    setItems(list.data.children);  
   };
+
+  
+  const translate = (text) => {
+
+    let fin = text.replace('&lt;!-- SC_OFF --&gt;','').replace('&lt;!-- SC_ON --&gt;','').replace('class="md"','');
+    let finfin = ReactHtmlParser(fin)
+    return finfin[0]
+  }
+
+  const translate2 = (text) => {
+
+    let fin = text.replace('&lt;!-- SC_OFF --&gt;','').replace('&lt;!-- SC_ON --&gt;','').replace('class="md"','');
+    let finfin = ReactHtmlParser(fin)
+    if (finfin[0].endsWith('.jpg')){
+      return "<img src='"+finfin[0]+"'/>"
+  
+  }
+
+  }
 
   return (
       
@@ -39,9 +59,9 @@ export const Main = () => {
           <Karma karma={item.data.score}/>
             <div className="postInfo">
               <h2>{item.data.title}</h2>
-              <p>{item.data.selftext}</p>
-              
-              <Footer author={item.data.author} timePosted={item.data.created_utc}/>
+              {item.data.selftext_html ? <React.Fragment>{ReactHtmlParser (translate(item.data.selftext_html))}</React.Fragment> : <p>{item.data.selftext}</p>}
+              {item.data.url ? <React.Fragment>{ReactHtmlParser (translate2(item.data.url))}</React.Fragment> : <p>{item.data.selftext}</p>}
+              <Footer author={item.data.author} commentCount={item.data.num_comments} timePosted={item.data.created_utc}/>
               {/* <Comment /> */}
             </div>         
           </article>

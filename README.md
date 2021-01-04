@@ -89,7 +89,11 @@ Then add this to <mark style ="background-color: lightgrey">scripts</mark> in <m
     ...
 }
 ````
-Need to add Enzyme.  I'll update this when the time comes.
+Then installed Enzyme:
+
+````
+npm i --save-dev enzyme
+````
 
 Upon attempting to start the script, I ran into a problem with the Jest dependency.  Here's the fix:
 
